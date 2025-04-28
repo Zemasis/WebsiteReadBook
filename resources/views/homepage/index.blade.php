@@ -17,19 +17,21 @@
 
                 <div>
                 <!-- ẢNH: có viền, bóng, bo góc riêng -->
-                    <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
-                        <div class="relative w-full h-[220px] bg-gray-100">
-                            <img src="{{ asset('storage/' . $book->image) }}" alt="Thumbnail" class="w-full h-full object-contain" />
-                            <span class="absolute top-2 left-2 bg-cyan-500 text-white text-xs font-semibold px-2 py-0.5 rounded">
-                                {{ $book->created_at->diffForHumans() }}
-                            </span>
-                            @if ($book->is_hot)
-                                <span class="absolute top-2 right-2 bg-pink-500 text-white text-xs font-semibold px-2 py-0.5 rounded">
-                                    Hot
+                    <a href="{{ route('BookDetail.show', ['id' => $book->id]) }}" class="text-blue-500 hover:underline">
+                        <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+                            <div class="relative w-full h-[220px] bg-gray-100">
+                                <img src="{{ asset('storage/' . $book->image) }}" alt="Thumbnail" class="w-full h-full object-contain" />
+                                <span class="absolute top-2 left-2 bg-cyan-500 text-white text-xs font-semibold px-2 py-0.5 rounded">
+                                    {{ $book->created_at->diffForHumans() }}
                                 </span>
-                            @endif
+                                @if ($book->is_hot)
+                                    <span class="absolute top-2 right-2 bg-pink-500 text-white text-xs font-semibold px-2 py-0.5 rounded">
+                                        Hot
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- TIÊU ĐỀ + CHƯƠNG: Nằm hẳn bên dưới ảnh -->
                     <div class="p-2 text-center">

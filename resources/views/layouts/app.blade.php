@@ -20,6 +20,7 @@
 
     <main class="p-4">
         @yield('content')
+        @yield('contentDetail')
     </main>
 
     <footer>
