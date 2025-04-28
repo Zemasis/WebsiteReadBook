@@ -1,71 +1,73 @@
-<div class="max-w-7xl w-full mx-auto bg-white shadow-xl rounded-xl overflow-hidden flex">
-    <!-- Bên trái: Thumbnail -->
-    <div class="w-1/2 p-3 flex flex-col h-full">
-        <div class=" p-4 pb-2 flex-grow">
-            <h2 class="text-lg font-semibold text-gray-700 mg-2 mb-4">Create Thumbnail</h2>
 
-        <!-- Ảnh nằm gọn trong div -->
-            <div class="p-2 border border-dashed border-gray-300 rounded-md bg-white h-full  flex items-center justify-center">
-                <img src="{{ asset('images/Book1.jpg') }}" alt="Preview" class="max-h-full object-contain" />
-            </div>
-        </div>
-        <button class="w-1/4 m-4 px-4 py-2 bg-[#f1912b] text-white font-semibold rounded-md hover:bg-[#e47a18]">Choose picture</button>
+<div class="p-6 bg-white rounded-lg shadow-md">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-bold">All Book:
+        <span class="text-indigo-600">{{$books->count()}}</span>
+        {{-- Projects: <span class="text-indigo-600">884</span> --}}
+      </h2>
+        <a href="{{ url('/Admin/ListBook?stateCRUD=create') }}" class="text-white">
+            <button class="bg-[#f1912b] hover:bg-[#e14b32] text-white px-4 py-2 rounded-md text-sm font-semibold">
+                + Add new Book
+            </button>
+        </a>
     </div>
 
+    <table class="w-full text-sm text-left text-gray-700">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="p-3"><input type="checkbox" /></th>
+          <th class="p-3">ID</th>
+          <th class="p-3">Cover</th>
+          <th class="p-3">Book Name</th>
+          <th class="p-3">Auhtor</th>
+          <th class="p-3">Chapter</th>
+          <th class="p-3">Description</th>
+          <th class="p-3">Rating</th>
+          <th class="p-3">Last update</th>
+          <th class="p-3 text-center">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($books as $book)
+        <tr class="border-b hover:bg-gray-50 align-middle">
+            <td class="p-3"><input type="checkbox" /></td>
+            <td class="p-3">
+                <span>{{ $book->id }}</span>
+            </td>
+            <td class="p-3">
+                <img src="{{ asset('storage/' . $book->image) }}" class="w-8 h-12" />
+            </td>
+            <td class="p-3">{{ $book->name }}</td>
+            <td class="p-3">{{ $book->author }}</td>
+            <td class="p-3">{{ $book->chapter }}</td>
+            <td class="p-3">{{ $book->description }}</td>
+            <td class="p-3">{{ $book->review }}</td>
+            <td class="p-3 text-gray-500">{{ $book->created_at->format('d M Y') }}</td>
+            <td class="p-3 gap-2 table-cell">
+                <div class="flex gap-2">
+                    <a href="{{ route('BookList.edit', ['id' => $book->id]) }}?stateCRUD=update ">
+                        <button class=" bg-[#f1912b] hover:bg-[#e14b32] text-white px-4 py-2 rounded-md text-sm font-semibold">
+                            Update
+                        </button>
+                    </a>
+                    <button class=" bg-[#f1912b] hover:bg-[#e14b32] text-white px-4 py-2 rounded-md text-sm font-semibold">Delete</button>
+                </div>
+            </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
 
-    <!-- Form bên phải -->
-    <div class="w-1/2 p-6">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-lg font-semibold text-gray-700">Create a new project</h2>
-        <button class="text-gray-400 hover:text-black text-4xl">&times;</button>
-      </div>
-
-      <!-- Project Name -->
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">Book name</label>
-        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f1912b]">
-      </div>
-
-      <!-- Author -->
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">Author</label>
-        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f1912b]">
-      </div>
-
-      <!-- Chapter -->
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">Chapter</label>
-        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f1912b]">
-      </div>
-
-       <!-- Description -->
-       <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-        <input type="text-area" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f1912b]">
-      </div>
-
-      <!-- review -->
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">Review</label>
-        <input type="text-area" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f1912b]">
-      </div>
-
-
-      <!-- Tags -->
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">Tags</label>
-        <div class="flex flex-wrap gap-2 border border-gray-300 rounded-md p-2 min-h-[48px]">
-          <span class="bg-gray-100 text-sm px-2 py-1 rounded-full">Web Design</span>
-          <span class="bg-gray-100 text-sm px-2 py-1 rounded-full">About Us</span>
-          <input type="text" placeholder="Type to search..." class="flex-1 min-w-[120px] outline-none text-sm text-gray-700" />
-        </div>
-        <p class="text-xs text-gray-400 mt-1">14 tags remaining</p>
-      </div>
-
-      <!-- Buttons -->
-      <div class="flex justify-between items-center mt-6">
-        <button class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100">Close</button>
-        <button class="px-4 py-2 bg-[#f1912b] text-white font-semibold rounded-md hover:bg-[#e47a18]">Save now</button>
+    <!-- Pagination -->
+    <div class="flex justify-between items-center mt-4">
+      <div class="text-sm text-gray-500">Showing 1-10 of 100</div>
+      <div class="space-x-1">
+        <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">&laquo;</button>
+        <button class="px-2 py-1 bg-blue-600 text-white rounded">1</button>
+        <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">2</button>
+        <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">3</button>
+        <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">&raquo;</button>
       </div>
     </div>
   </div>
+

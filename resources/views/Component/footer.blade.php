@@ -19,17 +19,18 @@
       <div class="flex-1 mx-10 text-left">
         <h3 class="text-[#f1912b] text-[20px] font-bold py-4">Follow Me</h3>
         <div class="text-xl space-x-4">
-          <i class="fab fa-instagram hover:text-[#f1912b] cursor-pointer"></i>
-          <i class="fab fa-facebook hover:text-[#f1912b] cursor-pointer"></i>
-          <i class="fab fa-linkedin hover:text-[#f1912b] cursor-pointer"></i>
-          <i class="fab fa-github hover:text-[#f1912b] cursor-pointer"></i>
+            <a class="fab fa-instagram hover:text-[#f1912b] cursor-pointer"></a>
+            <a href="https://www.facebook.com/phuc.vohuynh.1" class="fab fa-facebook hover:text-[#f1912b] cursor-pointer"></a>
+            <a class="fab fa-linkedin hover:text-[#f1912b] cursor-pointer"></a>
+            <a href="https://github.com/Zemasis" class="fab fa-github hover:text-[#f1912b] cursor-pointer"></a>
+
         </div>
       </div>
 
       <!-- Need Help -->
       <div class="flex-1 mx-10 text-left">
         <h3 class="text-[#f1912b] text-[20px] font-bold py-4">Need Helps</h3>
-        <h5 class="text-sm my-3 hover:text-[#f1912b] cursor-pointer">Track My Order</h5>
+        <h5 class="text-sm my-3 hover:text-[#f1912b] cursor-pointer">Your Account</h5>
         <h5 class="text-sm my-3 hover:text-[#f1912b] cursor-pointer">
           <a href="{{ url('/CancellationPolicy') }}" class="text-white hover:text-[#f1912b]">Cancellation Policy</a>
         </h5>
@@ -43,7 +44,7 @@
 
       <!-- About -->
       <div class="flex-1 mx-10 text-left">
-        <h3 class="text-[#f1912b] text-[20px] font-bold py-4">Aptech Figure</h3>
+        <h3 class="text-[#f1912b] text-[20px] font-bold py-4">Readverse</h3>
         <h5 class="text-sm my-3 hover:text-[#f1912b] cursor-pointer">
           <a href="" class="text-white hover:text-[#f1912b]">About us</a>
         </h5>

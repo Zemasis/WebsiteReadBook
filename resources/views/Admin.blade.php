@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="{{ asset('images/CircleCapypara.png') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/2577a97aef.js" crossorigin="anonymous"></script>
@@ -23,7 +24,7 @@
           <nav class="mt-4 text-gray-600  ">
             <a href="/Admin/dashboard" class="block px-6 py-3 hover:bg-[#f1912b] hover:text-white border-b-2 border-gray-300 transition font-medium">Dashboard</a>
             <a href="/Admin/crud-user" class="block px-6 py-3 hover:bg-[#f1912b] hover:text-white border-b-2 border-gray-300 transition">CRUD User</a>
-            <a href="/Admin/crud-book" class="block px-6 py-3 hover:bg-[#f1912b] hover:text-white border-b-2 border-gray-300 transition">CRUD Book</a>
+            <a href="/Admin/ListBook" class="block px-6 py-3 hover:bg-[#f1912b] hover:text-white border-b-2 border-gray-300 transition">List Book</a>
             <a href="/Admin/crud-author" class="block px-6 py-3 hover:bg-[#f1912b] hover:text-white border-b-2 border-gray-300 transition">CRUD Author</a>
           </nav>
         </aside>
@@ -34,8 +35,18 @@
                 @include('Component.dashBoard')
             @elseif ($section === 'crud-user')
                 @include('Component.CRUDuser')
-            @elseif ($section === 'crud-book')
-                @include('Component.CRUDBook')
+            @elseif ($section === 'ListBook')
+
+                @if ($stateCRUD === 'create')
+                    @include('Component.CreateBook')
+                @elseif ($stateCRUD === 'update')
+                    @include('Component.UpdateBook')
+                @else
+
+                    @include('Component.CRUDBook')
+                @endif
+
+
             @elseif ($section === 'crud-author')
                 @include('Component.CRUDAuthor')
             @else

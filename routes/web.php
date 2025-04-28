@@ -1,30 +1,59 @@
 <?php
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 use App\Models\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\BookListController;
 
 Route::get('/', function () {
     return redirect()->route('homepage.index');
 });
 
-Route::get('/homepage', function () {
-    return view('homepage.index');
-})->name('homepage.index');
+
+// Route::get('/homepage', function () {
+//     return view('homepage.index');
+// })->name('homepage.index');
+
+//Lấy dữ liệu
+Route::get('/homepage', [HomepageController::class, 'index'])->name('homepage.index');
+
 
 
 Route::post('/auth/register', [AuthController::class, 'store'])->name('register');
 
+
+
+// Router Admin
 Route::get('/Admin',function(){
     return view('Admin', ['section' => 'dashboard']);
 })->name('Admin');
 
+//Get info book
+Route::get('/Admin/ListBook', [BookListController::class, 'index' ])->name('BookList.index');
 
+Route::get('/Admin/ListBook/{id}', [BookListController::class, 'edit'])->name('BookList.edit');
 
-Route::get('/Admin/{section}', function ($section) {
-    return view('Admin', ['section' => $section]);
+Route::get('/Admin/{section}', function ($section,Request $request) {
+    $stateCRUD =$request->query('stateCRUD','default');
+    return view('Admin', ['section' => $section,'stateCRUD' => $stateCRUD]);
 });
+
+
+
+//////////////
+Route::post('/books', [BookController::class, 'store'])->name('books.store');
+
+//Put info book to update
+Route::put('/books/{id}', [BookController::class, 'update'])->name('books.update');
+
+
+
+
+
+
 
 Route::get('/AdminCarvan',function(){
     return view('Admin1');
