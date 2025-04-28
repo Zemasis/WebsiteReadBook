@@ -12,10 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('description')->nullable();
-            $table->timestamps();
+        $table->id();
+        $table->string('name'); // Tên sách
+        $table->string('author'); // Tác giả
+        $table->integer('chapter')->nullable(); // Số chương
+        $table->text('description')->nullable(); // Mô tả
+        $table->text('review')->nullable(); // Đánh giá
+        $table->json('tags')->nullable(); // Tags (dạng JSON)
+        $table->string('image')->nullable(); // Hình ảnh
+        $table->timestamps(); // Thời gian tạo và cập nhật
         });
     }
 

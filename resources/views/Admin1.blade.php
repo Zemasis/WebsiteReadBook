@@ -19,9 +19,11 @@
           <nav class="mt-4 text-gray-600">
             <a href="#" class="block px-6 py-3 hover:bg-indigo-100 hover:text-indigo-600 transition font-medium">Dashboard</a>
             <a href="#" class="block px-6 py-3 hover:bg-indigo-100 transition">Starter Pages</a>
-            <a href="#" class="block px-6 py-3 hover:bg-indigo-100 transition">Components</a>
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-100 transition">
+                Car management
+            </a>
             <a href="#" class="block px-6 py-3 hover:bg-indigo-100 transition">Forms</a>
-            <a href="#" class="block px-6 py-3 hover:bg-indigo-100 transition">Tables</a>
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-100 transition">Report</a>
             <a href="#" class="block px-6 py-3 hover:bg-indigo-100 transition">Charts</a>
             <a href="#" class="block px-6 py-3 hover:bg-indigo-100 transition">Icons</a>
           </nav>
@@ -88,4 +90,3 @@
 
 
 
-   

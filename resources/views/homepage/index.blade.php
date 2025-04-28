@@ -13,30 +13,33 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           <!-- Mỗi card truyện -->
+            @foreach ($books as $book)
 
-            <div>
-            <!-- ẢNH: có viền, bóng, bo góc riêng -->
-                <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
-                    <div class="relative w-full h-[220px] bg-gray-100">
-                        <img src="{{ asset('images/Book3.jpg') }}" alt="Thumbnail" class="w-full h-full object-contain" />
-                        <span class="absolute top-2 left-2 bg-cyan-500 text-white text-xs font-semibold px-2 py-0.5 rounded">
-                        4 Minutes Ago
-                        </span>
-                        <span class="absolute top-2 right-2 bg-pink-500 text-white text-xs font-semibold px-2 py-0.5 rounded">
-                        Hot
-                        </span>
+                <div>
+                <!-- ẢNH: có viền, bóng, bo góc riêng -->
+                    <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+                        <div class="relative w-full h-[220px] bg-gray-100">
+                            <img src="{{ asset('storage/' . $book->image) }}" alt="Thumbnail" class="w-full h-full object-contain" />
+                            <span class="absolute top-2 left-2 bg-cyan-500 text-white text-xs font-semibold px-2 py-0.5 rounded">
+                                {{ $book->created_at->diffForHumans() }}
+                            </span>
+                            @if ($book->is_hot)
+                                <span class="absolute top-2 right-2 bg-pink-500 text-white text-xs font-semibold px-2 py-0.5 rounded">
+                                    Hot
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <!-- TIÊU ĐỀ + CHƯƠNG: Nằm hẳn bên dưới ảnh -->
+                    <div class="p-2 text-center">
+                        <h3 class="text-sm font-semibold line-clamp-2">{{ $book->name }}</h3>
+                        <p class="text-xs text-gray-600 mt-1">Chapter {{ $book->chapter }}</p>
                     </div>
                 </div>
-
-                <!-- TIÊU ĐỀ + CHƯƠNG: Nằm hẳn bên dưới ảnh -->
-                <div class="p-2 text-center">
-                    <h3 class="text-sm font-semibold line-clamp-2">Tên Truyện Siêu Dài Cũng Được Hiển Thị</h3>
-                    <p class="text-xs text-gray-600 mt-1">Chương 123</p>
-                </div>
-            </div>
-
+            @endforeach
           <!-- Copy đoạn div trên thêm 5 lần nữa cho đủ 6 card -->
-          <!-- Bạn có thể dùng vòng lặp trong Blade để render list -->
+          {{-- <!-- Bạn có thể dùng vòng lặp trong Blade để render list -->
 
             <div>
             <!-- ẢNH: có viền, bóng, bo góc riêng -->
@@ -139,7 +142,7 @@
                 </div>
             </div>
           <!-- ... Thêm 4 card nữa tương tự -->
-        </div>
+        </div> --}}
       </section>
 @endsection
 
