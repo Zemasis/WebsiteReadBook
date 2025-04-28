@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .header{
     display: flex;
     padding: 0 100px;

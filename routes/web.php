@@ -50,6 +50,9 @@ Route::post('/books', [BookController::class, 'store'])->name('books.store');
 Route::put('/books/{id}', [BookController::class, 'update'])->name('books.update');
 
 
+//Delete book
+
+Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
 
 
 
