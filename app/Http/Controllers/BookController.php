@@ -59,7 +59,7 @@ class BookController extends Controller
         ]);
 
         // Chuyển hướng sau khi lưu thành công
-        return redirect()->back()->with('success', 'Book created successfully!');
+        return redirect()->route('BookList.index')->with('success', 'Book created successfully!');
     }
 
     /**
@@ -109,6 +109,9 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::findOrFail($id); // Tìm sách theo ID
+        $book->delete(); // Xóa sách
+
+        return redirect()->route('BookList.index')->with('success', 'Book deleted successfully!');
     }
 }

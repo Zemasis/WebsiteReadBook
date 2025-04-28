@@ -50,7 +50,12 @@
                             Update
                         </button>
                     </a>
-                    <button class=" bg-[#f1912b] hover:bg-[#e14b32] text-white px-4 py-2 rounded-md text-sm font-semibold">Delete</button>
+                    {{-- Form Delete --}}
+                    <form action="{{ route('books.destroy', ['id' => $book->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this book?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class=" bg-[#f1912b] hover:bg-[#e14b32] text-white px-4 py-2 rounded-md text-sm font-semibold">Delete</button>
+                    </form>
                 </div>
             </td>
         </tr>
