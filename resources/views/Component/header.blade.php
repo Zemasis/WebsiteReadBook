@@ -1,10 +1,12 @@
 
 
     <header class="header">
-        <div class="flex items-center justify-between">
-            <img src="{{ asset('images/CircleCapypara.png') }}" alt="Capybara Icon" class="Logo">
-            <img src="{{ asset('images/ReadVerse.png') }}" alt="ReadVerse Logo" class="Logo2">
-        </div>
+        
+            <div class="flex items-center justify-between">
+                <img src="{{ asset('images/CircleCapypara.png') }}" alt="Capybara Icon" class="Logo">
+                <img src="{{ asset('images/ReadVerse.png') }}" alt="ReadVerse Logo" class="Logo2">
+            </div>
+        </a>
 
         <div class="mx-4 state fa-solid fa-lightbulb flex justify-center items-center border-b-4 border-[#B55E18] hover:border-[#A82E1B] active:translate-y-1  active:border-b-2 transform transition cursor-pointer"></div>
         <input type="text" class="px-4 py-3 mx-4 w-1/2 border border-gray-600 rounded-xl " placeholder="Search...">

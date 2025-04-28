@@ -65,9 +65,12 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request,string $id)
     {
-        //
+        $book =Book::findOrFail($id); // Tìm sách theo ID
+
+        // Trả về view với thông tin sách
+        return view('homepage.BookDetail', compact('book'));
     }
 
     /**
